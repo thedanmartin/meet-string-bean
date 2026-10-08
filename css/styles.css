@@ -1,0 +1,85 @@
+html {
+    box-sizing:border-box;
+}
+
+*, *:before, *:after {
+    box-sizing:inherit;
+}
+
+img {
+    max-width: 100%;
+}
+
+/* 
+Notes on new terms in the styles below:
+-vw stands for "viewport width" and the number represents a percentage of that width. "10vw" is 10%
+of the viewport's width
+-span is different than the span we learned about when discussing HTML. here it  means that given 
+grid column extends from an initial grid line to an second grid line, so "1 / span 5" means the column 
+extends from grid line one to grid line five. 
+*/
+
+body {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  /* grid-template-rows: 10vw 30vw 10vw;  */
+  grid-gap: 1em;
+}
+
+header, footer {
+  grid-column: 1 / span 5;
+}
+
+main {
+  grid-column: 1 / span 3;
+}
+
+aside {
+  grid-column: span 2;
+}
+
+/* 
+this is a media query that says "when the width of the viewport exceeds 700px, activate the following styles",
+then, the grid column span for the main and aside elements changes from 1 / span 3 and span 2, respectively, to 1 / span 5 for both elements
+*/
+
+@media (max-width: 700px) {
+  
+  main, aside {
+    grid-column: 1 / span 5;
+  }
+  
+}
+
+/* Demo Specific Styles */
+body {
+  margin: 0 auto;
+  max-width: 56em;
+  padding: 1em 0;
+  font-family: 'Courier New', Courier, monospace;
+}
+
+header, main, aside, footer {
+  /* background: #909090; */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+aside {
+  background-color: red;
+}
+
+header, footer {
+  height: 10vw;
+}
+
+header {
+  background-color: yellow;
+  color: purple;
+}
+
+footer {
+  background: lightgoldenrodyellow;
+}
